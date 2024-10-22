@@ -2,6 +2,7 @@ package com.dev.nistha.controller;
 
 import com.dev.nistha.dto.ResponseDTO;
 import com.dev.nistha.dto.RoomDTO;
+import com.dev.nistha.entity.constant.RoomType;
 import com.dev.nistha.errorhandler.NoRoomFoundException;
 import com.dev.nistha.service.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -45,6 +47,11 @@ public class RoomController {
     @GetMapping("/{roomId}")
     public ResponseEntity<RoomDTO> getRoomById(@PathVariable Long roomId) throws NoRoomFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(roomService.getRoomById(roomId));
+    }
+
+    @GetMapping("/roomType")
+    public ResponseEntity<List<RoomType>> getRoomTypes() {
+        return ResponseEntity.ok(Arrays.asList(RoomType.values()));
     }
 
     @PutMapping
