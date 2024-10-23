@@ -1,10 +1,7 @@
 package com.dev.nistha.entity;
 
 import com.dev.nistha.entity.constant.RoomType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,7 +16,7 @@ public class Room {
 
     @Id
     @GeneratedValue
-    @Column(name = "room_id")
+    @Column(name = "id")
     private Long id;
     @Column(name = "room_no")
     private String roomNumber;
@@ -31,5 +28,9 @@ public class Room {
     private Integer roomCapacity;
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
+    @Column(name = "is_breakfast", nullable = false)
+    private Boolean isBreakfastIncluded;
+    @ManyToOne
+    private Hotel hotel;
 
 }
