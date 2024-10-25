@@ -14,5 +14,7 @@ public class RoomDTO {
     private BigDecimal roomPrice;
     private Integer roomCapacity;
     private Boolean isAvailable;
+    @Builder.Default
+    private Boolean breakfast = false;
 
 }

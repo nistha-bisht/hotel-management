@@ -29,7 +29,8 @@ public class Room {
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
     @Column(name = "is_breakfast", nullable = false)
-    private Boolean isBreakfastIncluded;
+    @Builder.Default
+    private Boolean isBreakfastIncluded = false;
     @ManyToOne
     private Hotel hotel;
 

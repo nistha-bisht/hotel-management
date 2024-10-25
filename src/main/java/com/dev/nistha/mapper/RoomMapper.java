@@ -15,17 +15,20 @@ public class RoomMapper {
                 .roomType(room.getRoomType().name())
                 .roomPrice(room.getRoomPrice())
                 .isAvailable(room.getIsAvailable())
+                .breakfast(room.getIsBreakfastIncluded())
                 .build();
     }
 
     public Room roomDTOToRoom(RoomDTO roomDTO) {
-        return Room.builder()
+        Room room = Room.builder()
                 .roomNumber(roomDTO.getRoomNumber())
                 .roomCapacity(roomDTO.getRoomCapacity())
                 .roomType(RoomType.valueOf(roomDTO.getRoomType()))
                 .roomPrice(roomDTO.getRoomPrice())
                 .isAvailable(roomDTO.getIsAvailable())
                 .build();
+        if (roomDTO.getBreakfast() != null && !roomDTO.getBreakfast()) room.setIsBreakfastIncluded(true);
+        return room;
     }
 
 }
