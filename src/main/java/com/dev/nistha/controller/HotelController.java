@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +19,12 @@ public class HotelController {
 
     @GetMapping
     public List<Map<String, String>> listHotels() {
-        Map<String, String> hotels = new LinkedHashMap<>();
+        List<Map<String, String>> hotels = new ArrayList<>();
 
-        hotels.put("name", "Radisson Blu");
+        hotels.add(Map.of("name", "Radisson Blu"));
 
-        return List.of(hotels);
+
+        return hotels;
     }
 
 }
